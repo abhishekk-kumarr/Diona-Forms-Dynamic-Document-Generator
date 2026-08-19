@@ -1,0 +1,1012 @@
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+:root {
+  --ink: #111;
+  --link: #164f86;
+  --line: #1c1c1c;
+  --muted: #555;
+
+  --accent: #2f5fdd;
+  --accent-dark: #1f3f9e;
+  --panel-bg: #ffffff;
+  --shell-bg: #eef1f6;
+  --border-soft: #dfe3ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--shell-bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =========================
+   TOP DEMO CONTROLS
+========================= */
+
+.demo-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: #ffffff;
+  color: #111;
+
+  padding: 14px 24px;
+
+  display: flex;
+  gap: 18px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow: 0 2px 10px rgba(20, 30, 60, 0.06);
+}
+
+.demo-bar > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-bar > div:first-child::before {
+  content: "W";
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--accent);
+  color: white;
+
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+
+  border-radius: 10px;
+}
+
+.demo-bar strong {
+  font-size: 15px;
+  font-weight: 700;
+  display: block;
+}
+
+.demo-bar .hint {
+  color: #6b7280;
+  font-size: 12px;
+  margin-left: 0;
+  display: block;
+  margin-top: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.controls select,
+.controls button {
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+
+  padding: 9px 12px;
+
+  background: #ffffff;
+  color: #111;
+
+  font-size: 13px;
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  transition: all 0.15s ease;
+}
+
+.controls select {
+  cursor: pointer;
+}
+
+.controls select:hover,
+.controls select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.controls button {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.controls button:hover {
+  background: #f3f5fa;
+  border-color: #c7ccd6;
+}
+
+/* Highlight the Print/Save PDF button as the primary action */
+.controls button#printBtn {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.controls button#printBtn:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+
+/* =========================
+   DOCUMENT
+========================= */
+
+.document {
+  width: 820px;
+
+  margin: 32px auto;
+
+  background: transparent;
+
+  padding: 0;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  width: 100%;
+
+  min-height: 1160px;
+
+  position: relative;
+
+  padding: 45px 48px 65px;
+
+  background: #ffffff;
+
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(20, 30, 60, 0.12);
+
+  break-after: page;
+  page-break-after: always;
+
+  /*
+    Important:
+    The page is now a flex column.
+    This allows the footer to stay at
+    the bottom without covering content.
+  */
+  display: flex;
+  flex-direction: column;
+}
+
+.page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+.doc-header {
+  display: grid;
+
+  grid-template-columns:
+    1.1fr
+    1.1fr
+    1.5fr;
+
+  gap: 20px;
+
+  align-items: start;
+
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+
+  object-fit: contain;
+
+  margin-top: 4px;
+}
+
+.contact {
+  font-family: Arial, sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.3;
+}
+
+.title-block {
+  text-align: left;
+}
+
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-weight: 700;
+
+  font-size: 21px;
+
+  line-height: 1.05;
+
+  margin: 0 0 10px;
+}
+
+.claim {
+  border: 2px solid #111;
+
+  display: inline-block;
+
+  padding: 7px 10px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.intro {
+  font-size: 15px;
+
+  margin: 12px 0 20px;
+}
+
+.section-title {
+  font-size: 19px;
+
+  margin: 16px 0 12px;
+
+  font-weight: 700;
+}
+
+.progress-section-title {
+  font-family: Arial, sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  margin: 12px 0;
+}
+
+.note {
+  font-size: 13px;
+
+  line-height: 1.25;
+
+  margin: 10px 0 14px;
+}
+
+
+/* =========================
+   TABLES
+========================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  font-size: 12px;
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+
+  padding: 6px;
+
+  vertical-align: top;
+
+  line-height: 1.15;
+}
+
+th {
+  font-weight: 400;
+
+  text-align: left;
+}
+
+td.dynamic {
+  color: var(--link);
+}
+
+.empty-row {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  padding: 10px;
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+/*
+  IMPORTANT CHANGE:
+
+  Footer is no longer absolute.
+
+  It is pushed to the bottom using
+  margin-top:auto.
+
+  This prevents it from overlapping
+  tables or other content.
+*/
+
+.footer {
+  position: static;
+
+  margin-top: auto;
+
+  padding-top: 12px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  flex-shrink: 0;
+}
+
+.footer .page-no {
+  text-align: right;
+}
+
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.checkbox {
+  width: 13px;
+  height: 13px;
+
+  display: inline-block;
+
+  border: 1px solid #777;
+
+  margin-right: 6px;
+
+  vertical-align: -2px;
+
+  position: relative;
+}
+
+.checkbox.checked::after {
+  content: "✓";
+
+  font-family: Arial, sans-serif;
+
+  font-weight: 700;
+
+  font-size: 13px;
+
+  position: absolute;
+
+  left: 1px;
+  top: -3px;
+}
+
+
+/* =========================
+   FORM OPTIONS
+========================= */
+
+.choice-row {
+  display: flex;
+
+  gap: 22px;
+
+  align-items: flex-start;
+
+  flex-wrap: wrap;
+}
+
+.choice {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 4px;
+
+  line-height: 1.15;
+}
+
+
+/* =========================
+   BOXES
+========================= */
+
+.boxed {
+  border: 1px solid var(--line);
+
+  padding: 9px 10px;
+
+  margin: 14px 0;
+}
+
+.boxed .label {
+  font-size: 13px;
+
+  margin-bottom: 10px;
+}
+
+.return-box {
+  border: 1px solid var(--line);
+
+  padding: 8px;
+}
+
+.return-top {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1.7fr;
+
+  gap: 12px;
+
+  align-items: start;
+}
+
+.duty-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 10px;
+}
+
+.other-line {
+  margin-top: 12px;
+}
+
+.progress-box {
+  border: 1px solid var(--line);
+
+  padding: 9px 10px;
+
+  margin: 12px 0;
+}
+
+
+/* =========================
+   FIELDS
+========================= */
+
+.line-field {
+  display: inline-flex;
+
+  min-width: 160px;
+
+  border-bottom: 1px solid #111;
+
+  height: 19px;
+
+  vertical-align: bottom;
+}
+
+.field-label {
+  font-size: 11px;
+
+  text-align: center;
+
+  margin-top: 2px;
+}
+
+.two-fields {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 55px;
+
+  align-items: end;
+
+  margin: 20px 6px;
+}
+
+.field {
+  text-align: center;
+
+  font-size: 13px;
+}
+
+.text-area {
+  border: 1px solid var(--line);
+
+  min-height: 90px;
+
+  padding: 8px;
+
+  font-size: 13px;
+
+  line-height: 1.2;
+}
+
+.text-area.tall {
+  min-height: 125px;
+}
+
+
+/* =========================
+   PROGRESS REPORT
+========================= */
+
+.progress-header {
+  margin-bottom: 18px;
+}
+
+.progress-intro {
+  font-size: 15px;
+
+  margin: 0 0 16px;
+}
+
+.recovery-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 18px;
+}
+
+.medical-choice {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  gap: 10px;
+}
+
+.certification {
+  font-size: 13px;
+
+  line-height: 1.15;
+
+  display: grid;
+
+  gap: 25px;
+
+  margin-top: 5px;
+}
+
+.cert-row {
+  display: flex;
+
+  gap: 8px;
+
+  align-items: flex-start;
+}
+
+
+/* =========================
+   RESPONSIVE SCREEN VIEW
+========================= */
+
+@media (max-width: 900px) {
+
+  .demo-bar {
+    position: static;
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .document {
+    width: calc(100% - 20px);
+
+    padding: 28px 24px 45px;
+  }
+
+  .doc-header {
+    grid-template-columns: 1fr;
+  }
+
+  .title-block {
+    text-align: left;
+  }
+
+  .duty-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+}
+
+
+/* =========================
+   PRINT / PDF
+========================= */
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        margin: 0;
+        background: white;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+        .page:not(:last-child) {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+        .document {
+        width: 210mm;
+        min-height: auto;
+        margin: 0;
+        padding: 15mm 14mm 12mm;
+        box-shadow: none;
+        border-radius: 0;
+        background: white;
+
+        display: block;
+        gap: 0;
+    }
+
+    /*
+       IMPORTANT:
+       Override the responsive mobile layout.
+
+       Chrome Print Preview can trigger
+       @media(max-width:900px), which was
+       changing the header into one column.
+    */
+
+    .doc-header {
+        display: grid !important;
+
+        grid-template-columns:
+            1.1fr
+            1.1fr
+            1.5fr !important;
+
+        gap: 20px !important;
+
+        align-items: start !important;
+
+        margin-bottom: 25px;
+    }
+
+    .logo {
+        width: 200px;
+        max-width: 52mm;
+        height: auto;
+    }
+
+    .contact {
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .title-block {
+        text-align: left !important;
+    }
+
+        .page {
+        width: 100%;
+
+        height: 267mm;
+        min-height: 267mm;
+
+        padding: 0 0 10mm;
+
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        break-after: page;
+        page-break-after: always;
+
+        overflow: hidden;
+    }
+
+    .page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .footer {
+        position: static;
+
+        margin-top: auto;
+
+        padding-top: 5mm;
+
+        padding-left: 3mm;
+        padding-right: 3mm;
+
+        flex-shrink: 0;
+    }
+
+    table {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .section-title,
+    .progress-section-title {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+}
+
+/* =========================================================
+   EXERCISE 2 - WORKER PROGRESS REPORT PRINT FIX
+========================================================= */
+
+@media print {
+
+  .progress-document .page {
+    height: 267mm;
+    min-height: 267mm;
+
+    padding-bottom: 8mm;
+
+    overflow: hidden;
+  }
+
+  .progress-document .progress-header {
+    margin-bottom: 10px;
+  }
+
+  .progress-document .progress-intro {
+    font-size: 12px;
+
+    margin: 0 0 9px;
+  }
+
+  .progress-document .progress-section-title {
+    font-size: 15px;
+
+    margin: 7px 0 6px;
+  }
+
+  .progress-document .return-box {
+    padding: 6px;
+
+    margin-bottom: 8px;
+  }
+
+  .progress-document .progress-box {
+    padding: 6px 8px;
+
+    margin: 7px 0;
+  }
+
+  .progress-document .progress-box .text-area {
+    min-height: 62px;
+
+    padding: 6px;
+
+    font-size: 11px;
+  }
+
+  .progress-document .recovery-grid {
+    gap: 12px;
+  }
+
+  .progress-document .choice {
+    font-size: 11px;
+
+    line-height: 1.05;
+  }
+
+  .progress-document .checkbox {
+    width: 11px;
+    height: 11px;
+
+    margin-right: 4px;
+  }
+
+  .progress-document .checkbox.checked::after {
+    font-size: 11px;
+
+    left: 0;
+    top: -3px;
+  }
+
+  .progress-document .return-top {
+    grid-template-columns:
+      1fr
+      1fr
+      1.55fr;
+
+    gap: 8px;
+  }
+
+  .progress-document .duty-grid {
+    gap: 6px;
+  }
+
+  .progress-document .line-field {
+    height: 16px;
+
+    min-width: 145px;
+  }
+
+  .progress-document .field-label {
+    font-size: 9px;
+
+    margin-top: 1px;
+  }
+
+  .progress-document .two-fields {
+    gap: 35px;
+
+    margin: 12px 6px;
+  }
+
+  .progress-document .medical-choice {
+    gap: 7px;
+  }
+
+  .progress-document .medical-choice .field {
+    font-size: 11px;
+  }
+
+  .progress-document .two-fields .field {
+    font-size: 11px;
+  }
+
+  .progress-document .text-area.tall {
+    min-height: 82px;
+  }
+
+  .progress-document .two-fields {
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+
+  .progress-document .progress-box + .progress-box {
+    margin-top: 7px;
+  }
+
+  .progress-document .progress-box:last-of-type {
+    margin-bottom: 5px;
+  }
+
+  .progress-document .certification {
+    font-size: 11px;
+
+    line-height: 1.1;
+
+    gap: 18px;
+
+    margin-top: 4px;
+  }
+
+  .progress-document .cert-row {
+    gap: 6px;
+  }
+
+  .progress-document .footer {
+    margin-top: auto;
+
+    padding-top: 3mm;
+
+    font-size: 10px;
+
+    flex-shrink: 0;
+  }
+
+}
+
+@media print {
+
+  .progress-document .page {
+    padding-top: 6mm;
+  }
+
+  .progress-document .page:first-child {
+    padding-top: 0;
+  }
+
+  .progress-document .page:nth-child(2),
+  .progress-document .page:nth-child(3) {
+    padding-top: 6mm;
+  }
+
+}
+
+@media print {
+
+  .document:not(.progress-document) .page {
+    padding-top: 6mm;
+  }
+
+  .document:not(.progress-document) .page:first-child {
+    padding-top: 0;
+  }
+
+  .document:not(.progress-document) .page:nth-child(2) {
+    padding-top: 6mm;
+  }
+
+}
